@@ -1,0 +1,35 @@
+body {
+    background-color: black;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+img {
+    height:60dvh;
+  }
+
+  h3,h5,p {
+    color: white;
+  }
+
+  .card-title {
+    color: white !important;
+  }
+
+  iframe {
+    border-radius: 10px;
+  }
+
+  .btn-danger {
+    background-color: #FF0033;
+
+  }
+
+  .bg-dark {
+    background-color: rgb(4, 15, 0) !important;
+    border-color: black !important;
+  }
+

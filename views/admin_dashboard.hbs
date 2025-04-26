@@ -1,0 +1,177 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-light border-bottom border-body" data-bs-theme="light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><b>Admin Dashboard</b></a>
+     
+        <form class="d-flex" role="search" action="/logout_admin">
+          <button class="btn btn-outline-danger" type="submit">Log Out</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+
+<div class="container mt-4 p-5 add-user">
+    <h5 class=" mb-5"><b>Add Custom Users</b></h5>
+    <form method="post" action="/addUser">
+    <div class="row g-3 align-items-center">
+
+        <div class="col-auto">
+            <label for="validationCustom01" class="form-label">Full Name</label>
+        </div>
+        <div class="col-auto">
+            <input type="text" class="form-control" name="full_name" id="validationCustom01" required>
+        </div>
+
+        <div class="col-auto">
+            <label for="validationCustom02" class="form-label">Email</label>
+        </div>
+        <div class="col-auto">
+            <input type="email" class="form-control" name="email" id="validationCustom02" required>
+        </div>
+
+        <div class="col-auto">
+            <label for="validationCustom03" class="form-label">Password</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" class="form-control" name="password" id="validationCustom03" required>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-success">Add</button>
+        </div>
+    </div>
+    </form>
+</div>
+
+
+
+
+<div class="container mt-5 p-5 view-user">
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-light border-bottom border-body" data-bs-theme="light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><b>List of Users</b></a>
+     
+        <form class="d-flex" role="search" action="/search" method="post">
+        <input class="form-control mr-sm-2 m-1" type="search" name='name' placeholder="Search Name" aria-label="Search">
+          <button class="btn btn-outline-success m-1" type="submit">Search</button>
+        </form>
+
+      </div>
+  </nav>
+
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Sl.No</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+            <tr>
+                <th scope="row">{{addOne @index}}</th>   {{!--addOne is defined in app.js file--}}
+                <td>{{this.name}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.password}}</td>
+    
+                <td>
+    
+                        <button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{addOne @index}}" data-bs-whatever="@fat"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                height="14" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325" />
+                            </svg></button>
+                  </td>
+                  
+                  <td>
+                        <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal" data-bs-target="#exampleModaldelete{{addOne @index}}"><svg xmlns="http://www.w3.org/2000/svg" width="14"
+                                height="14" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                <path
+                                    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                            </svg></button>
+    
+                </td>
+            </tr>
+
+
+{{!-- Delete poup window --}}
+
+<div class="modal fade" id="exampleModaldelete{{addOne @index}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Remove User</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you deleting the user {{this.name}} ?
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+        <form class="d-flex" action="/delete" method="post">
+        <input type="hidden" name="email" value= "{{this.email}}">
+        <button type="submit" class="btn btn-danger">Confirm</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+{{!-- Edit Popup window --}}
+
+<div class="modal fade" id="exampleModal{{addOne @index}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit User Data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="/edit" method="post">
+          <div class="mb-3">
+            <label for="validationCustom01" class="col-form-label">Full Name</label>
+            <input type="text" name="name" class="form-control" id="validationCustom01" required>
+          </div>
+          <div class="mb-3">
+            <label for="validationCustom02" class="col-form-label">Password</label>
+            <input type="text" name="password" class="form-control" id="validationCustom02" required>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        <input type="hidden" name="email" value= "{{this.email}}">
+        <button type="submit" class="btn btn-success">Save</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+            {{/each}}
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+
+
+

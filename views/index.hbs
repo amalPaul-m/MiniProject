@@ -1,0 +1,28 @@
+
+
+<div class="container">
+    <h5 class="text-center"><b>welcome</b></h5>
+    <h2 class="text-center mb-5"><b>SignUp Here</b></h2>
+    
+    <form class="row g-3" method="post" action="/signup">
+      <div class="form-floating">
+        <input type="text" class="form-control bg-transparent focus-ring focus-ring-light" name="full_name" id="full_name" placeholder="name@example.com">
+        <label for="floatingInput">Full Name</label>
+      </div>
+    <div class="form-floating">
+      <input type="email" class="form-control bg-transparent focus-ring focus-ring-light" name="email" id="email" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="text" class="form-control bg-transparent focus-ring focus-ring-light" name="password" id="floatingPassword" placeholder="Password">
+      <label for="floatingPassword">New Password</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control bg-transparent focus-ring focus-ring-light" name="con_pass" id="floatingPasswordconfirm" placeholder="Password">
+      <label for="floatingPassword">Confirm Password</label>
+    </div>
+        <span id="error_msg"></span>
+    <div class="col-12 mt-2">
+      <button type="submit" class="btn btn-color mt-4 mb-4" id="button">Sign Up</button>
+    </div>
+    </form>
